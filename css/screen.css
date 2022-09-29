@@ -80,6 +80,8 @@
 
     --focus-shadow-color: #3385FF30;
     --focus-shadow: 0 0 0 3px var(--focus-shadow-color);
+    
+    --transition-alpha: .2s linear;
 }
 
 /*------------------------------------*\
@@ -714,6 +716,73 @@ input::placeholder {
   background-color: var(--global-color-alpha);
   margin: auto;
   border-radius: 100%;
+}
+
+.c-custom-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.c-custom-toggle__fake-input {
+    display: block;
+    border: 1px solid #E2E3E7;
+    background-color: #F5F6FA;
+    border-radius: 24px;
+    width: 48px;
+    height: 24px;
+    margin-right: var(--global-whitespace-md);
+}
+
+.c-custom-toggle__fake-input::after {
+    content: "";
+    display: flex;
+    border-radius: 100%;
+    background-color: #fff;
+    /* border: 1px solid var(--global-color-neutral-100); */
+    /* box-shadow: 0 0 5px 2px var(--global-color-neutral-10); */
+    width: 22px;
+    height: 22px;
+}
+
+.c-option--hidden:checked + .c-custom-toggle .c-custom-toggle__fake-input{
+    background-color: var(--global-color-alpha);
+    border-color: var(--global-color-alpha-dark);
+    /* box-shadow: none; */
+}
+
+.c-option--hidden + .c-custom-toggle .c-custom-toggle__fake-input::after{
+    transition: all var(--transition-alpha);
+}
+
+.c-option--hidden:checked + .c-custom-toggle .c-custom-toggle__fake-input::after{
+    transform: translate(24px, 0);
+}
+
+.c-option--hidden:active + .c-custom-toggle .c-custom-toggle__fake-input::after {
+    width: 28px;
+    border-radius: 12px;
+}
+
+/* NEEDS FIX: ONLY WORKS ONCE */
+
+.c-option--hidden:active:checked + .c-custom-toggle .c-custom-toggle__fake-input::after {
+    width: 28px;
+    border-radius: 12px;
+    transform: translate(18px, 0);
+}
+
+.c-toggle-list {
+    margin-bottom: var(--global-whitespace);
+}
+
+.c-toggle-list__item {
+    margin-bottom: calc(var(--global-baseline) * 1.5);
+}
+
+.c-option--hidden:focus-visible + .c-custom-toggle .c-custom-toggle__fake-input{
+    border-color: var(--global-color-alpha-dark);
+    box-shadow: 0 0 0 3px #3385FF40;
+    transition: all var(--transition-alpha);
 }
 
 /*
