@@ -658,12 +658,19 @@ input::placeholder {
   
 .c-custom-option {
     display: flex;
+    --custom-option-borderColor: var(--global-input-borderColor);
+    --custom-option-focus-borderColor: var(--global-input-focus-borderColor);
+    --custom-option-hover-borderColor: var(--global-input-hover-borderColor);
 }
 
 .c-custom-option__symbol {
     opacity: 0;
     display: block;
 }
+
+.c-custom-option:hover {
+    --custom-option-borderColor: var(--custom-option-hover-borderColor);
+  }
 
 .c-option--hidden:checked + .c-custom-option .c-custom-option__symbol {
     transition: 2s;
@@ -676,12 +683,12 @@ input::placeholder {
     display: flex;
     width: 16px;
     height: 16px;
-    border: var(--global-borderWidth) solid var(--global-input-borderColor);
+    border: var(--global-borderWidth) solid var(--custom-option-borderColor);
     margin-right: 8px;
 }
 
 .c-custom-option__fake-input:hover {
-    border-color: var(--global-input-hover-borderColor);
+    border-color: var(--custom-option-borderColor);
 }
 
 .c-custom-option__fake-input--checkbox {
