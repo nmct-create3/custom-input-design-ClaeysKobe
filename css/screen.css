@@ -74,6 +74,9 @@
     --global-input-hover-borderColor: var(--global-color-neutral-300);
     --global-input-focus-borderColor: var(--global-color-alpha);
     --global-input-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
+
+    --global-input-transition:  all 100ms cubic-bezier(0.250, 0.970, 0.895, 0.310); /* custom */
+    --global-input-timing-function: cubic-bezier(0.250, 0.970, 0.895, 0.310); /* custom */
 }
 
 /*------------------------------------*\
@@ -655,8 +658,15 @@ input::placeholder {
 }
 
 .c-custom-option__symbol {
-    /* opacity: 0; */
+    opacity: 0;
     display: block;
+}
+
+.c-option--hidden:checked + .c-custom-option .c-custom-option__symbol {
+    transition: 2s;
+    transition: var(--global-input-transition);
+    transition-timing-function: var(--global-input-timing-function); /* custom */
+    opacity: 1;
 }
 
 .c-custom-option__fake-input {
@@ -680,7 +690,7 @@ input::placeholder {
     width: 10px;
     height: 10px;
     margin: auto;
-    color: var(--global-color-alpha);
+    fill: var(--global-color-alpha);
   }
   
 .c-custom-option__fake-input--radio .c-custom-option__symbol {
