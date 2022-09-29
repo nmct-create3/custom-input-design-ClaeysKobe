@@ -77,6 +77,9 @@
 
     --global-input-transition:  all 100ms cubic-bezier(0.250, 0.970, 0.895, 0.310); /* custom */
     --global-input-timing-function: cubic-bezier(0.250, 0.970, 0.895, 0.310); /* custom */
+
+    --focus-shadow-color: #3385FF30;
+    --focus-shadow: 0 0 0 3px var(--focus-shadow-color);
 }
 
 /*------------------------------------*\
@@ -639,20 +642,12 @@ input::placeholder {
     margin-right: var(--global-whitespace-sm);
 }
 
-.c-option--hidden:checked + .c-custom-option {
-    /*
-      Do magic stuff here, for example:
-      background-color: red;
-    */
+.c-option--hidden:focus-visible + .c-custom-option .c-custom-option__fake-input {
+    border-color: 1px solid var(--global-input-focus-borderColor);
+    box-shadow: var(--focus-shadow);
   }
 
-.c-option--hidden:checked + .c-custom-option .c-custom-option__symbol {
-  /*
-    Do magic stuff here, for example:
-    fill: blue;
-  */
-}
-
+  
 .c-custom-option {
     display: flex;
 }
@@ -675,6 +670,10 @@ input::placeholder {
     height: 16px;
     border: var(--global-borderWidth) solid var(--global-input-borderColor);
     margin-right: 8px;
+}
+
+.c-custom-option__fake-input:hover {
+    border-color: var(--global-input-hover-borderColor);
 }
 
 .c-custom-option__fake-input--checkbox {
@@ -711,7 +710,7 @@ input::placeholder {
 .c-label {
     margin-bottom: 0;
     font-size: 14px;
-    padding-bottom: var(--global-whitespace-xs);
+    padding-bottom: var(--global-whitespace-xs) !important;
     line-height: calc(var(--global-baseline) * 2);
     color: var(--global-color-neutral-xx-dark);
 }
