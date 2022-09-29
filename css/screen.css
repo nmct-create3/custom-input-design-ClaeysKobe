@@ -642,6 +642,14 @@ input::placeholder {
     margin-right: var(--global-whitespace-sm);
 }
 
+.c-option-list {
+    margin-bottom: var(--global-whitespace);
+}
+
+.c-option-list__item {
+    margin-bottom: calc(var(--global-baseline) * 1.5);
+}
+
 .c-option--hidden:focus-visible + .c-custom-option .c-custom-option__fake-input {
     border-color: 1px solid var(--global-input-focus-borderColor);
     box-shadow: var(--focus-shadow);
@@ -710,7 +718,7 @@ input::placeholder {
 .c-label {
     margin-bottom: 0;
     font-size: 14px;
-    padding-bottom: var(--global-whitespace-xs) !important;
+    padding-bottom: var(--global-whitespace-xs);
     line-height: calc(var(--global-baseline) * 2);
     color: var(--global-color-neutral-xx-dark);
 }
