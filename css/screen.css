@@ -82,6 +82,10 @@
     --focus-shadow: 0 0 0 3px var(--focus-shadow-color);
     
     --transition-alpha: .2s linear;
+
+    --global-page-color: var(--global-color-neutral-1000);
+    --global-page-backgroundColor: var(--global-color-neutral-10);
+    --global-card: var(--global-color-neutral-100);
 }
 
 /*------------------------------------*\
@@ -94,11 +98,25 @@
     Global page styles + universal box-sizing:
 */
 
+@media (prefers-color-scheme: dark) {
+    html {
+        --global-page-color: White !important;
+        --global-page-backgroundColor: var(--global-color-neutral-1000) !important;
+        --global-card: var(--global-color-neutral-900) !important;
+        
+    }
+    .c-logo {
+        --logo__path--1--fill: White;
+        --logo__path--2--fill: var(--logo__path--1--fill);
+        --logo__path--3--fill: var(--logo__path--1--fill);
+      }
+}
+
 html {
     line-height: 1.5;
     font-family: "Inter Web", Helvetica, arial, sans-serif;
-    color: var(--global-color-neutral-xxxx-dark);
-    background-color: var(--global-color-neutral-xxxx-light);
+    color: var(--global-page-color); 
+    background-color: var(--global-page-backgroundColor);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -119,7 +137,7 @@ html {
 
 ::selection {
     background: var(--global-color-alpha);
-    color: white;
+    color: var(--global-page-color);
     text-shadow: none;
 }
 
@@ -532,16 +550,16 @@ input::placeholder {
 }
 
 .c-logo__path--1 {
-    fill: var(--global-color-neutral-xxxx-dark);
-}
-
-.c-logo__path--2 {
-    fill: var(--global-color-alpha);
-}
-
-.c-logo__path--3 {
-    fill: var(--global-color-alpha-x-dark);
-}
+    fill: var(--logo__path--1--fill, var(--global-color-neutral-1000));
+  }
+  
+  .c-logo__path--2 {
+    fill: var(--logo__path--2--fill, var(--global-color-alpha));
+  }
+  
+  .c-logo__path--3 {
+    fill: var(--logo__path--3--fill, var(--global-color-alpha-700));
+  }
 
 /*
     Component: Card
@@ -550,7 +568,7 @@ input::placeholder {
 */
 
 .c-card {
-    background-color: White;
+    background-color: var(--global-card);
     margin-bottom: var(--global-whitespace);
     border-radius: var(--global-borderRadius);
     box-shadow: 0 0 0 var(--global-borderWidth) rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, .075);
@@ -565,7 +583,7 @@ input::placeholder {
 
 .c-card__footer {
     text-align: center;
-    border-top: var(--global-borderWidth) solid var(--global-color-neutral-xxx-light);
+    border-top: var(--global-borderWidth) solid var(--global-page-backgroundColor);
 }
 
 .c-card__title {
@@ -618,8 +636,8 @@ input::placeholder {
     width: 100%;
     border: var(--global-borderWidth) solid var(--global-input-borderColor);
     border-radius: var(--global-borderRadius);
-    color: var(--global-input-color);
-    background-color: var(--global-input-backgroundColor);
+    color: var(--global-page-color);
+    background-color: var(--global-page-backgroundColor);
     font-family: inherit;
     font-size: 16px;
     line-height: calc(var(--global-baseline) * 3);
