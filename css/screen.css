@@ -785,6 +785,21 @@ input::placeholder {
     transition: all var(--transition-alpha);
 }
 
+.c-toggle-list__item + .c-toggle-list__item {
+    padding-top: var(--global-whitespace);
+}
+
+.c-toggle-list__item {
+    display: block;
+}
+
+.c-custom-toggle--inverted {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    margin-right: 0px;
+}
+
 /*
     Component: Label
     ---
